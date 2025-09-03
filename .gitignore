@@ -47,3 +47,27 @@ pids/
 # Temporary files
 tmp/
 temp/
+
+# Git and submodules
+.git/
+*.orig
+*.rej
+.gitmodules.bak
+
+# Submodule related
+.submodule/
+submodule-*
+
+# Package managers
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# Coverage reports
+coverage/
+.nyc_output/
+.coverage/
+
+# Cache directories
+.cache/
+.parcel-cache/
