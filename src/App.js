@@ -73,17 +73,17 @@ const App = () => {
 
   if (loadingCompanies) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-hero-gradient">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="glass-effect card-shadow rounded-2xl p-8 max-w-md w-full text-center"
+          className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 max-w-md w-full text-center border border-white/30 shadow-card-lg"
         >
           <LoadingSpinner size="lg" />
           <h3 className="text-xl font-semibold text-slate-800 mt-4 mb-2">
             Discovering Companies
           </h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-slate-600 text-sm leading-relaxed" aria-live="polite">
             {discoveryStatus}
           </p>
         </motion.div>
@@ -92,22 +92,27 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen p-4 lg:p-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen p-4 lg:p-6 bg-slate-50">
+      {/* accessible skip link */}
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white px-3 py-2 rounded-md shadow-sm">
+        Skip to content
+      </a>
+
+      <div className="max-w-6xl mx-auto" id="main">
         <Header />
         
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="glass-effect card-shadow rounded-2xl p-6 lg:p-8 mb-6"
+          transition={{ delay: 0.05 }}
+          className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 lg:p-8 mb-6 border border-white/30 shadow-card-lg"
         >
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
             <div>
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
                 Practice Dashboard
               </h2>
-              <p className="text-slate-600">
+              <p className="text-slate-600 text-sm">
                 Found <span className="font-semibold text-primary-600">{companies.length}</span> companies available for practice
               </p>
             </div>
@@ -132,10 +137,10 @@ const App = () => {
           {selectedCompany && (
             <motion.div
               key={selectedCompany}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.28 }}
             >
               <QuestionList
                 company={selectedCompany}
@@ -150,6 +155,11 @@ const App = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* live status for discovery (useful for screen readers) */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {discoveryStatus}
+        </div>
       </div>
     </div>
   );
