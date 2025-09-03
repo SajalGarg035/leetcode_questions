@@ -16,6 +16,7 @@
     @apply font-sans antialiased;
     @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100;
     @apply min-h-screen;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -32,6 +33,32 @@
     @apply bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent;
   }
 }
+
+/* Custom primary colors */
+:root {
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+}
+
+/* Tailwind primary color utilities */
+.bg-primary-50 { background-color: var(--primary-50); }
+.bg-primary-100 { background-color: var(--primary-100); }
+.bg-primary-600 { background-color: var(--primary-600); }
+.bg-primary-700 { background-color: var(--primary-700); }
+.text-primary-600 { color: var(--primary-600); }
+.text-primary-700 { color: var(--primary-700); }
+.text-primary-800 { color: var(--primary-800); }
+.border-primary-400 { border-color: var(--primary-400); }
+.ring-primary-400 { --tw-ring-color: var(--primary-400); }
+.ring-primary-500 { --tw-ring-color: var(--primary-500); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
